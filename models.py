@@ -1,11 +1,9 @@
-import databases
-from sqlalchemy import MetaData, Table, String, Integer, Column, Text, DateTime, Boolean, ForeignKey, create_engine, \
-    func, select, Date, insert, Float
-from datetime import datetime, date
-import psycopg2
+from sqlalchemy import MetaData, Table, String, Integer, Column, create_engine, Date, insert, Float
+from datetime import datetime
 
 
 metadata = MetaData()
+
 
 comps = Table(
     "comps",
@@ -26,9 +24,4 @@ metadata.create_all(engine)
 conn = engine.connect()
 ins = insert(comps)
 
-# r = conn.execute(ins,
-#     items_name="test2",
-#     price=123,
-#     rate=1
-#     )
 

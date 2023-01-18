@@ -2,17 +2,11 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium_stealth import stealth
 import time
-import databases
-from sqlalchemy import create_engine
-from typing import List
-from sqlalchemy import MetaData, Table, String, Integer, Column, Text, DateTime, Boolean, ForeignKey, create_engine, \
-    func, select, Date, desc, literal_column, insert
-from datetime import datetime
-from models import metadata, comps
-import psycopg2
+from sqlalchemy import create_engine, insert
+from models import comps
 
 
-engine = create_engine('postgresql://postgres:s1t@localhost/test_1')
+engine = create_engine('postgresql://postgres:_@localhost/test_1')
 conn = engine.connect()
 ins = insert(comps)
 
@@ -20,7 +14,6 @@ ins = insert(comps)
 options = webdriver.ChromeOptions()
 options.add_argument("start-maximized")
 
-# options.add_argument("--headless")
 
 options.add_experimental_option("excludeSwitches", ["enable-automation"])
 options.add_experimental_option('useAutomationExtension', False)
@@ -36,7 +29,6 @@ stealth(driver,
         )
 
 data = {}
-# counts = 0
 
 
 for page in range(1, 20):
@@ -72,8 +64,7 @@ for link in data:
                 print(data[link]['price'])
                 print(ram)
                 ram = 8
-
-        rate = 0
+                continue
         try:
                 if cpu[0:3] == 'Int':
                         rate = (150 + ram * 200 + (float(data[link]['price']) * -0.005))
@@ -84,13 +75,6 @@ for link in data:
         except:
                 continue
 
-#         print(data[link]['item_name'])
-#         print(float(data[link]['price']))
-#         print(data[link]['items_link'])
-# #        print(rate)
-#         counts += 1
-#         print(counts)
-#         print()
         r = conn.execute(ins,
                          items_name=data[link]['item_name'],
                          price=float(data[link]['price']),
