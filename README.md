@@ -1,33 +1,31 @@
 # scraping_v1
-Для запуска нужно установить необходимые библеотеки из файла requirements
-и вебдрайвер для chrome
+To run the project, you need to install the required libraries from the requirements file and the Chrome WebDriver.
 
-доступ в интерент )
+Internet access :)
 
-вера в то что система защиты на сайтах не поменялась ) у меня в течение 4х дней все работало
+And some faith that the anti-bot protection on the websites has not changed :) It worked for me for four days in a row.
 
+Two websites are scraped: www.holodilnik.ru and www.svyaznoy.ru. More than 1,000 product items can be collected. The data is stored in PostgreSQL.
 
-заскраплено 2 сайта 
-www.holodilnik.ru
-www.svyaznoy.ru
-техники можно снять более 1000 едениц
-база хранения postgres
+The rating is calculated as follows.
 
-рейтинг вычесляеться 
-у процессоров 3 категории:
+For processors, there are three categories:
 
-    если интел 150
+if Intel: 150
 
-    если амд 100
+if AMD: 100
 
-    если что-то еще 50
+anything else: 50
 
-у памяти вес 200 за 1гб
+svg
 
-у цены -0,005
+RAM has a weight of 200 per 1 GB.
 
-Top5 ноутбуков )))  
-нужно поработать маркетологам над критериями оценки  )))
+Price has a weight of -0.005.
+
+Top 5 laptops )))
+
+The marketing team still needs to work on the evaluation criteria )))
 
 https://www.holodilnik.ru/digital_tech/notebook/hp/45m81es/sankt-peterburg/
 https://www.holodilnik.ru/digital_tech/notebook/redmi/xma2007_aj/sankt-peterburg/
